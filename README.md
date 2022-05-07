@@ -30,7 +30,7 @@ S3 is used as a backend for storing terraform state and for exchanging data betw
   ```
   
 #### Setup your variables in infra layer (layer1-aws)
-Update variables in layer1-aws/terraform.tfvars
+Update variables in layer1-aws/terraform.tfvars. \
 All possible var explains in layer1-aws/README.md
 
 #### Setup your services in k8s layer (layer2-k8s)
