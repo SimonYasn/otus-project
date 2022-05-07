@@ -11,6 +11,15 @@
   ```bash
   $ export AWS_PROFILE=your_project
   ```
+
+#### Setup terragrunt and terraform versions
+You should pass your versions in next spaces:
+1) terraform/.terraform-version
+2) terraform/.terragrunt-version
+3) terraform/terragrunt.hcl
+4) terraform/layer1-aws/main.tf
+5) terraform/layer2-k8s/main.tf
+
 #### S3 state backend
 
 S3 is used as a backend for storing terraform state and for exchanging data between layers. You can manually create s3 bucket and then put backend setting into `backend.tf` file in each layer. Alternatively you can run from `terraform/` directory:
@@ -19,13 +28,7 @@ S3 is used as a backend for storing terraform state and for exchanging data betw
   $ export TF_REMOTE_STATE_BUCKET=my-new-state-bucket
   $ terragrunt run-all init
   ```
-#### Setup terragrunt and terraform versions
-You should pass your versions in next spaces:
-1) terraform/.terraform-version
-2) terraform/.terragrunt-version
-3) terraform/layer1-aws/main.tf
-4) terraform/layer2-k8s/main.tf
-
+  
 #### Setup your variables in infra layer (layer1-aws)
 Update variables in layer1-aws/terraform.tfvars
 All possible var explains in layer1-aws/README.md
