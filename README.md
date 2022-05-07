@@ -42,6 +42,10 @@ Update variables in layer2-k8s/helm-releases.yaml
   $ cd terraform/layer1-aws
   $ terraform apply
 ```
+After successfull apply copy kubectl config comand from output.
+Example:
+aws eks update-kubeconfig --name simonots-demo-euc1 --region eu-central-1
+
 #### k8s up
 ```bash
   $ cd terraform/layer2-k8s
@@ -52,3 +56,6 @@ Update variables in layer2-k8s/helm-releases.yaml
   $ cd application/
   $ kubectl apply -f echoserver-deployment.yaml
 ```
+# Budget
+Estimated cost ~ 216usd per month
+Alert placed in terraform/layer1-aws/budget.tf
