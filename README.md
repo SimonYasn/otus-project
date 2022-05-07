@@ -59,3 +59,19 @@ aws eks update-kubeconfig --name simonots-demo-euc1 --region eu-central-1
 # Budget
 Estimated cost ~ 216usd per month
 Alert placed in terraform/layer1-aws/budget.tf
+
+| Resource      | Type/size               | Price per hour $ | Price per GB $ | Number | Monthly cost |
+| ------------- | ----------------------- | ---------------: | -------------: | -----: | -----------: |
+| EKS           |                         |              0.1 |                |      1 |           73 |
+| EC2 ondemand  | t3.medium               |           0.0456 |                |      1 |       33,288 |
+| EC2 Spot      | t3.medium/t3a.medium    |    0.0137/0.0125 |                |      1 |           10 |
+| EC2 Spot Ci   | t3.medium/t3a.medium    |    0.0137/0.0125 |                |      0 |           10 |
+| EBS           | 100 Gb                  |                  |           0.11 |      2 |           22 |
+| NAT gateway   |                         |            0.048 |          0.048 |      1 |           35 |
+| Load Balancer | Classic                 |            0.028 |          0.008 |      1 |        20.44 |
+| S3            | Standart                |                  |                |      1 |            1 |
+| ECR           | 10 Gb                   |                  |                |      2 |         1.00 |
+| Route53       | 1 Hosted Zone           |                  |                |      1 |         0.50 |
+| Cloudwatch    | First 10 Metrics - free |                  |                |        |            0 |
+|               |                         |                  |                |  Total |        216.8 |
+
