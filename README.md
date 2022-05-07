@@ -57,7 +57,7 @@ aws eks update-kubeconfig --name simonots-demo-euc1 --region eu-central-1
   $ kubectl apply -f echoserver-deployment.yaml
 ```
 # Budget
-Estimated cost ~ 216usd per month
+Estimated infa cost ~ 216usd per month.
 Alert placed in terraform/layer1-aws/budget.tf
 
 | Resource      | Type/size               | Price per hour $ | Price per GB $ | Number | Monthly cost |
