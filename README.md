@@ -1,17 +1,39 @@
-# Boilerplate for a basic AWS infrastructure with EKS cluster
+# Before 
+#### AWS Auth
+ ```bash
+  $ aws configure --profile your_project
+  AWS Access Key ID [None]: *****************
+  AWS Secret Access Key [None]: *********************
+  Default region name [None]: eu-central-1
+  Default output format [None]: json
+  ```
 
-[![Developed by Mad Devs](https://maddevs.io/badge-dark.svg)](https://maddevs.io?utm_source=github&utm_medium=madboiler)
-[![License](https://img.shields.io/github/license/maddevsio/aws-eks-base)](https://github.com/maddevsio/aws-eks-base/blob/main/LICENSE.md)
-[![CI Status](https://github.com/maddevsio/aws-eks-base/workflows/Terraform-ci/badge.svg)](https://github.com/maddevsio/aws-eks-base/actions)
+  ```bash
+  $ export AWS_PROFILE=your_project
+  ```
+#### S3 state backend
 
-## Advantages of this boilerplate
+S3 is used as a backend for storing terraform state and for exchanging data between layers. You can manually create s3 bucket and then put backend setting into `backend.tf` file in each layer. Alternatively you can run from `terraform/` directory:
 
-- **Infrastructure as Code (IaC)**: using Terraform, you get an infrastructure that’s smooth and efficient
-- **State management**: Terraform saves the current infrastructure state, so you can review further changes without applying them. Also, state can be stored remotely, so you can work on the infrastructure in a team
-- **Scalability and flexibility**: the infrastructure built based on this boilerplate can be expanded and updated anytime
-- **Comprehensiveness**: you get scaling and monitoring instruments along with the basic infrastructure. You don’t need to manually modify anything in the infrastructure; you can simply make changes in Terraform as needed and deploy them to AWS and Kubernetes
-- **Control over resources**: the IaC approach makes the infrastructure more observable and prevents waste of resources
-- **Clear documentation**: your Terraform code effectively becomes your project documentation. It means that you can add new members to the team, and it won’t take them too much time to figure out how the infrastructure works
+  ```bash
+  $ export TF_REMOTE_STATE_BUCKET=my-new-state-bucket
+  $ terragrunt run-all init
+  ```
+#### Setup terragrunt and terraform versions
+You should pass your versions in next spaces:
+1) terraform/.terraform-version
+2) terraform/.terragrunt-version
+3) terraform/layer1-aws/main.tf
+4) terraform/layer2-k8s/main.tf
+
+#### Setup your variables in infra layer (layer1-aws)
+Update variables in layer1-aws/terraform.tfvars
+All possible var explains in layer1-aws/README.md
+
+#### Setup your services in k8s layer (layer2-k8s)
+Update variables in layer2-k8s/helm-releases.yaml
+
+
 
 ## Why you should use this boilerplate
 
