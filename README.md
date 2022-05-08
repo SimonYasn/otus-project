@@ -53,9 +53,14 @@ aws eks update-kubeconfig --name simonots-demo-euc1 --region eu-central-1
   $ terraform apply
 ```
 #### deploy app
+Update hosts in application/echoserver-deployment.yaml
+Update prometheus host in application/echoserver-keda.yaml
+
 ```bash
   $ cd application/
   $ kubectl apply -f echoserver-deployment.yaml
+  $ kubectl apply -f echoserver-keda.yaml
+  $ kubectl apply -f echoserver-servicemonitor.yaml
 ```
 #### destroy all
 ```bash
