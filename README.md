@@ -43,7 +43,7 @@ Update var(default value) "region" in layer2-k8s/variables.tf
   $ cd terraform/layer1-aws
   $ terraform apply
 ```
-After successfull apply copy kubectl config comand from output.
+After successfull apply copy kubectl config command from output.
 Example:
 aws eks update-kubeconfig --name simonots-demo-euc1 --region eu-central-1
 
@@ -52,15 +52,14 @@ aws eks update-kubeconfig --name simonots-demo-euc1 --region eu-central-1
   $ cd terraform/layer2-k8s
   $ terraform apply
 ```
+After successfull apply copy grafana password with command from output.
+
 #### deploy app
 Update hosts in application/echoserver-deployment.yaml
 Update prometheus host in application/echoserver-keda.yaml
 
 ```bash
-  $ cd application/
-  $ kubectl apply -f echoserver-deployment.yaml
-  $ kubectl apply -f echoserver-keda.yaml
-  $ kubectl apply -f echoserver-servicemonitor.yaml
+  $ kubectl apply -f application/
 ```
 #### destroy all
 ```bash
