@@ -1,0 +1,21 @@
+---
+#
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: echoserver-scaledobject
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: echoserver
+  pollingInterval: 10  # Optional. Default: 30 seconds
+  cooldownPeriod:  300 # Optional. Default: 300 seconds
+  minReplicaCount: 2   # Optional. Default: 0
+  maxReplicaCount: 4 # Optional. Default: 100
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: 'http://prometheus-demo.simonots.site'
+      metricName: 'flask_http_request_total'
+      query: 'sum(rate(flask_http_request_total{job="echoserver"}[1m]))'
+      threshold: "1"

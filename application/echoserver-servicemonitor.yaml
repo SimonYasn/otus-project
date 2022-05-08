@@ -1,0 +1,36 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    serviceapp: echoserver-servicemonitor
+    release: kube-prometheus-stack
+  name: echoserver-servicemonitor
+  namespace: monitoring
+spec:
+  endpoints:
+  - port: echoserver-http
+    scheme: http
+    path: /metrics
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      svc: echoserver
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    serviceapp: echoserver-alert
+    release: kube-prometheus-stack
+  name: echoserver-alert
+  namespace: monitoring
+spec:
+  groups:
+  - name: echoserver
+    rules:
+    - alert: ApplicationAlert
+      expr: flask_exporter_info{job="echoserver"} == 0
