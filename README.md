@@ -63,8 +63,7 @@ Update prometheus host in application/echoserver-keda.yaml
 ```
 #### destroy all
 ```bash
-  $ cd application/
-  $ kubectl destroy -f echoserver-deployment.yaml
+  $ kubectl destroy -f application/
   $ cd terraform/layer2-k8s
   $ terraform destroy
   $ cd terraform/layer1-aws
