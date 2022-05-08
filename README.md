@@ -85,7 +85,7 @@ Alert placed in terraform/layer1-aws/budget.tf
 |               |                         |                  |                |  Total |        216.8 |
 
 # Debug typical problems
-#### layer2-k8s freezes on terraform destroy stage \
+#### layer2-k8s freezes on terraform destroy stage 
 Solution: \
 Skip this stage and destroy first layer. During the process some services in AWS should destroyed manually: EC2 Load Balancer, EC2 Volumes, EC2 Route53 records, VPC
 
