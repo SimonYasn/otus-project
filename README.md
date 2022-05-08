@@ -56,6 +56,15 @@ aws eks update-kubeconfig --name simonots-demo-euc1 --region eu-central-1
   $ cd application/
   $ kubectl apply -f echoserver-deployment.yaml
 ```
+#### destroy all
+```bash
+  $ cd application/
+  $ kubectl destroy -f echoserver-deployment.yaml
+  $ cd terraform/layer2-k8s
+  $ terraform destroy
+  $ cd terraform/layer1-aws
+  $ terraform destroy
+```
 # Budget
 Estimated infa cost ~ 216usd per month.
 Alert placed in terraform/layer1-aws/budget.tf
