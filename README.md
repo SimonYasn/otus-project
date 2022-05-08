@@ -35,6 +35,7 @@ All possible var explains in layer1-aws/README.md
 2) Update email for budger alerts in layer1-aws/budget.tf 
 #### Setup your services in k8s layer (layer2-k8s)
 Update variables in layer2-k8s/helm-releases.yaml
+Update var(default value) "region" in layer2-k8s/variables.tf
 
 # Usage
 #### Infra up
